@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex" />
+        <title>{{ title ?? site:name }}</title>
+        <link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
+
+        {{ shopify_tokens }}
+    </head>
+    <body class="font-sans leading-normal bg-gray-100 text-grey-800">
+
+        {{ partial:layout/header }}
+        {{ partial:components/banner }}
+
+        <div class="pt-10">
+            {{ template_content }}
+
+            {{ partial:components/cta }}
+        </div>
+
+        <script src="{{ mix src='/js/site.js' }}"></script>
+    </body>
+</html>

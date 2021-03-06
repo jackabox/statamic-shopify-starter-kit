@@ -1,0 +1,138 @@
+title: Product
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: content
+        field:
+          always_show_set_button: false
+          buttons:
+            - h2
+            - h3
+            - bold
+            - italic
+            - unorderedlist
+            - orderedlist
+            - removeformat
+            - quote
+            - anchor
+            - image
+            - table
+          save_html: true
+          toolbar_mode: fixed
+          link_noopener: false
+          link_noreferrer: false
+          target_blank: false
+          reading_time: false
+          fullscreen: true
+          allow_source: true
+          display: Content
+          type: bard
+          icon: bard
+          listable: hidden
+      -
+        handle: variants
+        field:
+          display: Variants
+          type: variants
+          icon: tags
+          listable: hidden
+      -
+        handle: gallery
+        field:
+          mode: grid
+          restrict: false
+          allow_uploads: true
+          display: Gallery
+          type: assets
+          icon: assets
+          listable: hidden
+          container: shopify
+      -
+        handle: vendor
+        field:
+          type: terms
+          taxonomies:
+            - vendor
+          display: Vendor
+          mode: select
+          width: 33
+      -
+        handle: tags
+        field:
+          mode: select
+          taxonomies:
+            - product_tags
+          display: Tags
+          type: terms
+          icon: taxonomy
+          width: 33
+          listable: hidden
+      -
+        handle: type
+        field:
+          mode: select
+          taxonomies:
+            - product_type
+          display: Type
+          type: terms
+          icon: taxonomy
+          width: 33
+          listable: hidden
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+          display: Slug
+          listable: hidden
+          generate: true
+      -
+        handle: published_at
+        field:
+          mode: single
+          time_enabled: true
+          time_required: true
+          earliest_date: '1900-01-01'
+          full_width: false
+          inline: false
+          columns: 1
+          rows: 1
+          display: 'Published At'
+          type: date
+          icon: date
+          listable: true
+          format: 'Y-m-d H:i:s'
+      -
+        handle: featured_image
+        field:
+          mode: grid
+          restrict: false
+          allow_uploads: true
+          display: 'Featured Image'
+          type: assets
+          icon: assets
+          listable: hidden
+          container: shopify
+          max_files: 1
+      -
+        handle: product_id
+        field:
+          display: 'Product ID'
+          type: disabled_text
+          icon: disabled_text
+          listable: hidden

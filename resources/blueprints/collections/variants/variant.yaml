@@ -1,0 +1,102 @@
+hide: true
+title: Variant
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: slug
+        field:
+          type: disabled_text
+          required: true
+          localizable: true
+          icon: disabled_text
+          display: 'Variant ID'
+          validate:
+            - required
+          width: 50
+      -
+        handle: sku
+        field:
+          display: SKU
+          type: disabled_text
+          icon: lock
+          width: 50
+          listable: hidden
+      -
+        handle: product_slug
+        field:
+          type: hidden
+          listable: hidden
+          antlers: false
+          display: 'Product Slug'
+      -
+        handle: price
+        field:
+          display: Price
+          type: disabled_text
+          icon: disabled_text
+          listable: hidden
+          validate:
+            - required
+          width: 33
+      -
+        handle: inventory_quantity
+        field:
+          type: disabled_text
+          icon: disabled_text
+          antlers: false
+          display: Stock
+          listable: hidden
+          validate:
+            - nullable
+            - numeric
+          width: 33
+      -
+        handle: grams
+        field:
+          display: 'Weight (Grams)'
+          type: disabled_text
+          icon: disabled_text
+          width: 33
+          listable: hidden
+      -
+        handle: option1
+        field:
+          antlers: false
+          display: 'Option 1'
+          type: disabled_text
+          icon: disabled_text
+          width: 33
+          listable: hidden
+      -
+        handle: option2
+        field:
+          antlers: false
+          display: 'Option 2'
+          type: disabled_text
+          icon: disabled_text
+          width: 33
+          listable: hidden
+      -
+        handle: option3
+        field:
+          display: 'Option 3'
+          type: disabled_text
+          icon: disabled_text
+          width: 33
+          listable: hidden
+      -
+        handle: requires_shipping
+        field:
+          display: 'Requires Shipping'
+          type: toggle
+          icon: toggle
+          listable: hidden

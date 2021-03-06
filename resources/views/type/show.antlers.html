@@ -1,0 +1,14 @@
+<div class="container max-w-4xl mx-auto">
+
+    <h1 class="mb-10 text-5xl font-bold leading-tight tracking-tighter">{{ title }}</h1>
+
+    {{ entries as="products" limit="9" paginate="true" }}
+        <div class="grid grid-cols-3 gap-5">
+            {{ products }}
+                {{ partial:components/product }}
+            {{ /products }}
+        </div>
+
+        {{ partial:components/pagination }}
+    {{ /entries }}
+</div>
