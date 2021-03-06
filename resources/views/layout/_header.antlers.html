@@ -1,30 +1,31 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <header class="relative bg-white">
     <div class="px-4 mx-auto max-w-7xl sm:px-6">
-      <div class="flex items-center justify-between py-6 border-b-2 border-gray-100 md:justify-start md:space-x-10">
-        <div class="flex justify-start lg:w-0 lg:flex-1">
-          <a href="/" class="text-lg font-semibold text-gray-900">
-            Statamic Shopify
-          </a>
+        <div class="flex flex-wrap items-center justify-between py-6 border-b-2 border-gray-100 md:flex-no-wrap md:justify-start md:space-x-10">
+            <div class="flex justify-start w-full lg:w-auto">
+                <a href="/" class="text-lg font-semibold text-gray-900">
+                    Statamic Shopify
+                </a>
+            </div>
+
+            <div class="flex items-center w-full mt-3 space-x-5 lg:w-auto lg:flex-1 md:mt-0 md:justify-end md:space-x-10">
+                <nav class="flex space-x-10">
+                    {{ nav:header }}
+                    <a href="{{ url }}" class="text-base font-medium hover:text-gray-900 {{ if is_current }}text-gray-900{{ else }}text-gray-500{{ /if}}">
+                        {{ title }}
+                    </a>
+                    {{ /nav:header }}
+                </nav>
+
+
+                <a href="/cart" class="flex items-center text-base font-medium text-gray-500 whitespace-nowrap hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-8" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+
+                    <span class="ml-2">(<span data-ss-cart-count>0</span> Items)</span>
+                </a>
+            </div>
         </div>
-
-        <nav class="hidden space-x-10 md:flex">
-            {{ nav:header }}
-            <a href="{{ url }}" class="text-base font-medium hover:text-gray-900 {{ if is_current }}text-gray-900{{ else }}text-gray-500{{ /if}}">
-                {{ title }}
-            </a>
-            {{ /nav:header }}
-        </nav>
-
-        <div class="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
-          <a href="/cart" class="flex items-center text-base font-medium text-gray-500 whitespace-nowrap hover:text-gray-900">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-8" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-
-            <span class="ml-2">(<span data-ss-cart-count>0</span> Items)</span>
-          </a>
-        </div>
-      </div>
     </div>
 </header>
