@@ -8,10 +8,9 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "jackabox/statamic-shopify": "^0.4.0",
+        "jackabox/statamic-shopify": "^1.0.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "spatie/laravel-ray": "^1.14",
         "statamic/cms": "3.0.*"
     },
     "require-dev": {

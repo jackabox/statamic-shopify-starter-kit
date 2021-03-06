@@ -1,40 +1,58 @@
-<p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
+<div align="center">
+    <h1>Statamic Shopify Starter Kit</h1>
 
-## About Statamic 3
+[demo](https://shopify.demo.jackwhiting.co.uk)
+[docs](https://statamic-shopify.jackwhiting.co.uk)
+[purchase]()
+</div>
 
-Statamic 3 is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+The starter kit is a recommended way to install Statamic Shopify.
 
-> **Note:** This repository contains the code for the Statamic application. To contribute to the core package, visit the [Statamic core package repository][cms-repo].
+The boilerplate not only installs the plugin and gives you the necessary options but it also comes with a full demo that is customised to work with Shopify on the front-end. It's built with:
 
+- Tailwind CSS
+- ES6 JavaScript
 
-## Learning Statamic
+Everything is completely customisable and should give you an awesome start to your project.
 
-Statamic 3 has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
-
-## Support
-
-We provide official developer support on [Statamic 3 Pro](https://statamic.com/pricing) projects. Community-driven support is available on the [forum](https://statamic.com/forum) and in [Discord][discord].
-
-
-## Contributing
-
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
+If you are looking to install the add-on to an existing project check out the [getting started](frontend/getting-started) section.
 
 
-## Code of Conduct
+## Install Starter Kit
 
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
+```bash
+git clone git@github.com:jackabox/statamic-shopify-starter-kit.git shopify
+cd shopify
+rm -rf .git
+composer update
+cp .env.example .env
+php artisan key:generate
+```
 
+In short, this will:
 
-## Important Links
+- clone the repository
+- delete the old `.git` info
+- install composer
+- copy the .env
+- generate a key for the application.
 
-- [Statamic Main Site](https://statamic.com)
-- [Statamic 3 Documentation][docs]
-- [Statamic 3 Core Package Repo][cms-repo]
-- [Statamic 3 Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
+## Create a User
 
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+Make a super user to access the control panel.
+
+```bash
+php please make:user
+```
+
+## Publish the assets
+
+```
+yarn && yarn dev
+```
+
+## Enjoy
+
+That's it for getting the starter kit setup. For your next steps, you'll need to set up your [Shopify app](setup#creating-a-shopify-app).
+
+Enjoy :)
