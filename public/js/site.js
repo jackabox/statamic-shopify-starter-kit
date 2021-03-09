@@ -10095,7 +10095,7 @@ var deleteRowFromStorefront = function deleteRowFromStorefront(row) {
  */
 
 
-var updateQtyInStorefront = function updateQtyInStorefront(row, qty) {
+var updateQtyInStorefront = Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["debounce"])(function (row, qty) {
   var id = row.getAttribute('data-ss-variant-id');
   var items = [{
     id: id,
@@ -10107,12 +10107,11 @@ var updateQtyInStorefront = function updateQtyInStorefront(row, qty) {
     setCartCount(lineItems);
     setCartSubtotal(subtotalPriceV2.amount);
   })["catch"](function (err) {});
-};
+}, 500);
 /**
  * Cart initialisation script which groups all the
  * functions above.
  */
-
 
 var cart = function cart() {
   if (cartHolder == null && cartView == null) {
@@ -10211,7 +10210,7 @@ var client = shopify_buy__WEBPACK_IMPORTED_MODULE_0___default.a.buildClient({
 /*!*****************************************!*\
   !*** ./resources/js/shopify/helpers.js ***!
   \*****************************************/
-/*! exports provided: htmlToElements, bannerMessage, formatCurrency */
+/*! exports provided: htmlToElements, bannerMessage, formatCurrency, debounce */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10219,6 +10218,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "htmlToElements", function() { return htmlToElements; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bannerMessage", function() { return bannerMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatCurrency", function() { return formatCurrency; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
+var _this = undefined;
+
 /**
  * HTML to elements
  *
@@ -10272,6 +10274,28 @@ var bannerMessage = function bannerMessage(elements) {
 
 var formatCurrency = function formatCurrency(price) {
   return '£' + parseFloat(price).toFixed(2);
+};
+/**
+ * Debounce used to stop quantity update of cart
+ * being triggered multiple times in quick succession
+ * @param {*} func
+ * @param {*} wait
+ * @param {*} immediate
+ */
+
+var debounce = function debounce(callback, wait) {
+  var timeout;
+  return function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var context = _this;
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      return callback.apply(context, args);
+    }, wait);
+  };
 };
 
 /***/ }),
@@ -10374,8 +10398,8 @@ new _shopify_cart__WEBPACK_IMPORTED_MODULE_1__["default"]();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jack/Sites/testing/shopify-demo/resources/js/site.js */"./resources/js/site.js");
-module.exports = __webpack_require__(/*! /Users/jack/Sites/testing/shopify-demo/resources/css/tailwind.css */"./resources/css/tailwind.css");
+__webpack_require__(/*! /Users/jack/Sites/testing/shopify-starter-kit/resources/js/site.js */"./resources/js/site.js");
+module.exports = __webpack_require__(/*! /Users/jack/Sites/testing/shopify-starter-kit/resources/css/tailwind.css */"./resources/css/tailwind.css");
 
 
 /***/ })
