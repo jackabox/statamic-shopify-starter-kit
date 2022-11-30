@@ -1,6 +1,10 @@
 import client from './client'
-import { checkoutId } from './checkout'
-import { htmlToElements, formatCurrency, bannerMessage, debounce } from './helpers'
+import {
+  htmlToElements,
+  formatCurrency,
+  bannerMessage,
+  debounce,
+} from './helpers'
 
 const cartLoading = document.getElementById('ss-cart-loading')
 const noItemsMessage = document.getElementById('ss-cart-no-items')
@@ -18,13 +22,13 @@ const setCartCount = () => {
   }
 
   client.checkout
-    .fetch(checkoutId)
+    .fetch(localStorage.getItem('statamic.shopify.cart.id'))
     .then(({ lineItems }) => {
       let count = 0
-      lineItems.forEach(item => (count = count + item.quantity))
+      lineItems.forEach((item) => (count = count + item.quantity))
       countTarget.innerHTML = count
     })
-    .catch(err => {
+    .catch((err) => {
       // Handle Errors here.
     })
 }
@@ -61,10 +65,14 @@ const showCartOverview = async (lineItems, price, checkoutLink) => {
                 <picture class="aspect-w-1 aspect-h-1 overflow-hidden block relative w-20 h-20">`
 
     if (variant.image) {
-        html = html + `<img src="${variant.image.src}" class="pin-0 absolute object-cover" />`
+      html =
+        html +
+        `<img src="${variant.image.src}" class="pin-0 absolute object-cover" />`
     }
 
-    html = html + `</picture>
+    html =
+      html +
+      `</picture>
     </div>
     <div>
         <span class="block font-semibold">${title}</span>
@@ -88,11 +96,10 @@ const showCartOverview = async (lineItems, price, checkoutLink) => {
 
     const elements = htmlToElements(html)
 
-    elements.forEach(el => {
+    elements.forEach((el) => {
       tableBody.appendChild(el)
     })
   })
-
 
   // Init delete/qty inputs we just appended
   initCartActions()
@@ -111,7 +118,7 @@ const showCartOverview = async (lineItems, price, checkoutLink) => {
  *
  * @param amount
  */
-const setCartSubtotal = amount => {
+const setCartSubtotal = (amount) => {
   const subtotalEl = document.querySelector('[data-ss-subtotal]')
 
   if (subtotalEl != null) {
@@ -127,16 +134,16 @@ const setCartSubtotal = amount => {
 const initCartActions = () => {
   const tableRows = document.querySelectorAll('#ss-cart-view table tbody tr')
 
-  tableRows.forEach(row => {
+  tableRows.forEach((row) => {
     const btnEls = row.querySelector('[data-ss-delete]')
     const qtyEls = row.querySelector('input[name=qty]')
 
-    btnEls.addEventListener('click', e => {
+    btnEls.addEventListener('click', (e) => {
       e.preventDefault()
       deleteRowFromStorefront(row)
     })
 
-    qtyEls.addEventListener('change', e => {
+    qtyEls.addEventListener('change', (e) => {
       e.preventDefault()
       updateQtyInStorefront(row, e.target.value)
     })
@@ -149,13 +156,13 @@ const initCartActions = () => {
  *
  * @param row
  */
-const deleteRowFromStorefront = row => {
+const deleteRowFromStorefront = (row) => {
   const id = row.getAttribute('data-ss-variant-id')
   const items = []
   items.push(id)
 
   client.checkout
-    .removeLineItems(checkoutId, items)
+    .removeLineItems(localStorage.getItem('statamic.shopify.cart.id'), items)
     .then(({ lineItems, subtotalPriceV2 }) => {
       setCartCount(lineItems)
       setCartSubtotal(subtotalPriceV2.amount)
@@ -182,17 +189,17 @@ const updateQtyInStorefront = debounce((row, qty) => {
   const items = [
     {
       id: id,
-      quantity: parseInt(qty)
-    }
+      quantity: parseInt(qty),
+    },
   ]
 
   client.checkout
-    .updateLineItems(checkoutId, items)
+    .updateLineItems(localStorage.getItem('statamic.shopify.cart.id'), items)
     .then(({ lineItems, subtotalPriceV2 }) => {
       setCartCount(lineItems)
       setCartSubtotal(subtotalPriceV2.amount)
     })
-    .catch(err => {})
+    .catch((err) => {})
 }, 500)
 
 /**
@@ -206,8 +213,8 @@ const cart = () => {
 
   // Fetch the cart
   client.checkout
-    .fetch(checkoutId)
-    .then(checkout => {
+    .fetch(localStorage.getItem('statamic.shopify.cart.id'))
+    .then((checkout) => {
       const { lineItems, subtotalPriceV2, webUrl } = checkout
 
       cartLoading.classList.add('hidden')
@@ -220,7 +227,7 @@ const cart = () => {
       // Show Elements
       showCartOverview(lineItems, subtotalPriceV2, webUrl)
     })
-    .catch(err => {})
+    .catch((err) => {})
 }
 
 export {
@@ -228,7 +235,7 @@ export {
   hideCartOverview,
   initCartActions,
   setCartSubtotal,
-  setCartCount
+  setCartCount,
 }
 
 export default cart

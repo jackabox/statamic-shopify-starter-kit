@@ -1,4 +1,3 @@
-hide: true
 title: Variant
 sections:
   main:
@@ -15,12 +14,12 @@ sections:
         handle: slug
         field:
           type: disabled_text
-          required: true
           localizable: true
           icon: disabled_text
           display: 'Variant ID'
           validate:
             - required
+            - 'unique_entry_value:{collection},{id},{site}'
           width: 50
       -
         handle: sku
@@ -46,7 +45,15 @@ sections:
           listable: hidden
           validate:
             - required
-          width: 33
+          width: 50
+      -
+        handle: compare_at_price
+        field:
+          display: 'Compare At Price'
+          type: disabled_text
+          icon: disabled_text
+          listable: hidden
+          width: 50
       -
         handle: inventory_quantity
         field:
@@ -58,14 +65,14 @@ sections:
           validate:
             - nullable
             - numeric
-          width: 33
+          width: 50
       -
         handle: grams
         field:
           display: 'Weight (Grams)'
           type: disabled_text
           icon: disabled_text
-          width: 33
+          width: 50
           listable: hidden
       -
         handle: option1
@@ -100,3 +107,27 @@ sections:
           type: toggle
           icon: toggle
           listable: hidden
+      -
+        handle: storefront_id
+        field:
+          display: 'Storefront ID'
+          type: hidden
+          icon: hidden
+          listable: hidden
+          instructions_position: above
+      -
+        handle: inventory_policy
+        field:
+          display: 'Inventory Policy'
+          type: hidden
+          icon: hidden
+          listable: hidden
+          instructions_position: above
+      -
+        handle: inventory_management
+        field:
+          display: 'Inventory Management'
+          type: hidden
+          icon: hidden
+          listable: hidden
+          instructions_position: above

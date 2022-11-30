@@ -38,6 +38,13 @@ sections:
           type: bard
           icon: bard
           listable: hidden
+      - handle: options
+        field:
+          mode: dynamic
+          display: Options
+          type: array
+          icon: array
+          listable: hidden
       -
         handle: variants
         field:
@@ -64,29 +71,6 @@ sections:
             - vendor
           display: Vendor
           mode: select
-          width: 33
-      -
-        handle: tags
-        field:
-          mode: select
-          taxonomies:
-            - product_tags
-          display: Tags
-          type: terms
-          icon: taxonomy
-          width: 33
-          listable: hidden
-      -
-        handle: type
-        field:
-          mode: select
-          taxonomies:
-            - product_type
-          display: Type
-          type: terms
-          icon: taxonomy
-          width: 33
-          listable: hidden
   sidebar:
     display: Sidebar
     fields:

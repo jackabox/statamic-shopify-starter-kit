@@ -8,10 +8,10 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "jackabox/statamic-shopify": "^1.0.0",
+        "jackabox/statamic-shopify": "^1.7.8",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "statamic/cms": "3.0.*"
+        "statamic/cms": "3.3.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -24,7 +24,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
     },
     "extra": {
         "laravel": {
@@ -46,6 +49,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "pre-update-cmd": [
+            "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
