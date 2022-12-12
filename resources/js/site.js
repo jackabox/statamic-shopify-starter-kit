@@ -1,8 +1,8 @@
-import checkout from './shopify/checkout'
-import cart, { setCartCount } from './shopify/cart'
-import productForm from './shopify/products'
+import checkout from "./vendor/shopify/checkout";
+import cart, { setCartCount } from "./vendor/shopify/cart";
+import productForm from "./vendor/shopify/products";
 
-new checkout()
-new setCartCount()
-new productForm()
-new cart()
+new checkout();
+new setCartCount();
+new productForm();
+new cart();
