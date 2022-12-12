@@ -1,11 +1,10 @@
 module.exports = {
-    purge: {
-      content: [
-        './resources/**/*.antlers.html',
-        './resources/**/*.blade.php',
-        './content/**/*.md'
-      ]
-    },
+    content: [
+      './resources/**/*.antlers.html',
+      './resources/**/*.blade.php',
+      './content/**/*.md',
+      './resources/**/*.js',
+    ],
     important: true,
     theme: {
       extend: {
